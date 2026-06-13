@@ -1,8 +1,16 @@
 ======================================
 --INSERING DATA INTO RESPECTIVE TABLES
 ======================================
+--INSERING DATA INTO RESPECTIVE TABLES
 CREATE OR ALTER PROCEDURE bronze.load_bronze AS
 BEGIN
+	PRINT '================================'
+	PRINT 'LOADING IN BRONZE LAYER'
+	PRINT '================================'
+
+	PRINT '--------------------------------'
+	PRINT 'LOADING BRONZE CRM TABLES'
+	PRINT '--------------------------------'
 	TRUNCATE TABLE bronze.crm_cust_info; 
 	BULK INSERT bronze.crm_cust_info
 	FROM 'F:\dwh\sql-data-warehouse-project\datasets\source_crm\cust_info.csv'
@@ -29,6 +37,10 @@ BEGIN
 	FIELDTERMINATOR=',',
 	TABLOCK
 	);
+
+	PRINT '--------------------------------'
+	PRINT 'LOADING BRONZE ERP TABLES'
+	PRINT '--------------------------------'
 
 	TRUNCATE TABLE bronze.erp_cust_az12; 
 	BULK INSERT bronze.erp_cust_az12
